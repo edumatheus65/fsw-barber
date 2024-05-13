@@ -1,3 +1,4 @@
+import BookingItem from "../_components/booking-item";
 import Header from "../_components/header";
 import { formatDate } from "../helpers/dateHelpers";
 import Search from "./_components/search";
@@ -16,6 +17,11 @@ const Home = () => {
 
       <div className="px-5 mt-6">
         <Search />
+      </div>
+
+      <div className="px-5 mt-6">
+        <h2 className="text-xs mb-3 text-gray-400 font-bold">Agendamentos</h2>
+        <BookingItem />
       </div>
     </div>
 
