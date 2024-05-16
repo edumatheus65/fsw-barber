@@ -11,7 +11,7 @@ interface ServiceItemProps {
     isAuthenticated?: boolean;
 }
 
-const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {    
+const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
     const handleBookingClick = () => {
         if (!isAuthenticated) {
             return signIn("google")
