@@ -13,3 +13,10 @@ export const formatDayMonth = (date: Date) => {
     })
     return formatedDate.charAt(0).toUpperCase() + formatedDate.slice(1);
 }
+
+export const formatDateHour = (date: Date) => {
+    const formattedHour = format(date, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+        locale: ptBR
+    });
+    return formattedHour.charAt(0).toUpperCase() + formattedHour.slice(1);
+};

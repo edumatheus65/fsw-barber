@@ -11,10 +11,12 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { generateDayTimeList } from "../_helpers/hoursHelpers";
-import { formatDayMonth } from "@/app/helpers/dateHelpers";
+import { formatDate, formatDateHour, formatDayMonth } from "@/app/helpers/dateHelpers";
 import { saveBooking } from "../_actions/save-bookings";
 import { setHours, setMinutes } from "date-fns";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 interface ServiceItemProps {
     barbershop: Barbershop;
     service: Service;
@@ -23,10 +25,12 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps) => {
     const { data } = useSession();
+    const router = useRouter()
 
     const [date, setDate] = useState<Date | undefined>(new Date())
     const [hour, setHour] = useState<string | undefined>()
     const [submitIsLoading, setSubmitIsLoading] = useState(false);
+    const [sheetIsOpen, setSheetIsOpen] = useState(false)
 
     const handleDateClick = (date: Date | undefined) => {
         setDate(date);
@@ -62,6 +66,17 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                 date: newDate,
                 userId: (data.user as any).id,
             })
+
+            setSheetIsOpen(false);
+            setHour(undefined);
+            setDate(undefined);
+            toast("Reserva realizada com sucesso!", {
+                description: formatDateHour(newDate),
+                action: {
+                    label: "Visualizar",
+                    onClick: () => router.push('/bookings'),
+                },
+            })
         } catch (error) {
             console.error(error);
         } finally {
@@ -96,7 +111,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                             <p className="text-primary text-sm font-bold">
                                 {formatCurrency(Number(service.price))}
                             </p>
-                            <Sheet>
+                            <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                                 <SheetTrigger asChild>
                                     <Button variant="secondary" onClick={handleBookingClick}>
                                         Reservar
