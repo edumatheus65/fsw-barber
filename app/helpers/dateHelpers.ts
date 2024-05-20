@@ -6,3 +6,10 @@ export const formatDate = (date: Date) => {
         locale: ptBR
     })
 }
+
+export const formatDayMonth = (date: Date) => {
+    const formatedDate = format(date, "dd 'de' MMMM", {
+        locale: ptBR
+    })
+    return formatedDate.charAt(0).toUpperCase() + formatedDate.slice(1);
+}
