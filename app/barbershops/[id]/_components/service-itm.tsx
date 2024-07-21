@@ -55,12 +55,12 @@ const ServiceItem = ({
     }
 
     const refreshAvailableHours = async () => {
-      const _daybookings = await getDayBookings(date);
+      const _daybookings = await getDayBookings(barbershop.id, date);
       setDayBookings(_daybookings);
     };
 
     refreshAvailableHours();
-  }, [date, dayBookings]);
+  }, [date, dayBookings, barbershop.id]);
 
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
@@ -99,7 +99,7 @@ const ServiceItem = ({
         userId: (data.user as any).id,
       });
 
-      const _daybookings = await getDayBookings(date);
+      const _daybookings = await getDayBookings(barbershop.id, date);
       setDayBookings(_daybookings);
 
       setSheetIsOpen(false);
