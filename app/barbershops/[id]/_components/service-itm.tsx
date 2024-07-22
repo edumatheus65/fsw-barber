@@ -18,11 +18,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { generateDayTimeList } from "../_helpers/hoursHelpers";
-import {
-  formatDate,
-  formatDateHour,
-  formatDayMonth,
-} from "@/app/helpers/dateHelpers";
+import { formatDateHour, formatDayMonth } from "@/app/helpers/dateHelpers";
 import { saveBooking } from "../_actions/save-bookings";
 import { setHours, setMinutes } from "date-fns";
 import { Loader2 } from "lucide-react";
