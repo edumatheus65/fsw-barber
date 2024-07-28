@@ -3,10 +3,10 @@ import Header from "../_components/header";
 import { db } from "../_lib/prisma";
 import { formatDate } from "../helpers/dateHelpers";
 import Search from "./_components/search";
-import BarbershopItem from "./_components/barbershop-item"
+import BarbershopItem from "./_components/barbershop-item";
 
 const Home = async () => {
-  const barbershops = await db.barbershop.findMany({})
+  const barbershops = await db.barbershop.findMany({});
   const formattedDate = formatDate(new Date());
 
   return (
@@ -23,36 +23,37 @@ const Home = async () => {
       </div>
 
       <div className="px-5 mt-6">
-        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">AGENDAMENTOS</h2>
-        <BookingItem />
+        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">
+          AGENDAMENTOS
+        </h2>
+        {/* <BookingItem /> */}
       </div>
 
       <div className="px-5 mt-6">
-        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">Recomendados</h2>
+        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">
+          Recomendados
+        </h2>
 
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
-            <BarbershopItem
-              key={barbershop.id}
-              barbershop={barbershop} />
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
 
       <div className="px-5 mt-6 mb-[4.5rem]">
-        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">Populares</h2>
+        <h2 className="text-xs mb-3 uppercase text-gray-400 font-bold">
+          Populares
+        </h2>
 
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
-            <BarbershopItem
-              key={barbershop.id}
-              barbershop={barbershop} />
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
       </div>
     </div>
-
   );
-}
+};
 
 export default Home;
