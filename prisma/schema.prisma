@@ -16,7 +16,6 @@ model User {
   accounts      Account[]
   sessions      Session[]
   bookings      Booking[]
-
   @@map("users")
 }
 
@@ -27,6 +26,7 @@ model Barbershop {
   imageUrl String
   services Service[]
   bookings Booking[]
+  phones String[]
 }
 
 model Service {
