@@ -4,7 +4,7 @@ import { formatDate } from "../helpers/dateHelpers";
 import Search from "./_components/search";
 import BarbershopItem from "./_components/barbershop-item";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../_lib/auth";
 import BookingItem from "../_components/booking-item";
 
 const Home = async () => {
