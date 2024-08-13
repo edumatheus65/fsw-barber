@@ -120,7 +120,9 @@ const ServiceItem = ({
       return [];
     }
 
-    return generateDayTimeList(date).filter((time) => {
+    const generatedTimes = generateDayTimeList(date);
+
+    const availableTimes = generatedTimes.filter((time) => {
       const timeHour = Number(time.split(":")[0]);
       const timeMinutes = Number(time.split(":")[1]);
 
@@ -137,6 +139,8 @@ const ServiceItem = ({
 
       return false;
     });
+
+    return availableTimes;
   }, [date, dayBookings]);
 
   const formatedDayMonth = date ? formatDayMonth(date) : "";
