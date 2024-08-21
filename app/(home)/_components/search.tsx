@@ -26,10 +26,16 @@ const formSchema = z.object({
     }),
 });
 
-const Search = () => {
+interface SearchProps {
+  defaultValues?: z.infer<typeof formSchema>;
+}
+
+const Search = ({ defaultValues }: SearchProps) => {
   const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues,
   });
 
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
