@@ -10,23 +10,29 @@ import BookingItem from "../_components/booking-item";
 const Home = async () => {
   const session = await getServerSession(authOptions);
 
-  const [barbershops, confirmedBookings] = await Promise.all([
-    db.barbershop.findMany({}),
-    session?.user
-      ? db.booking.findMany({
-          where: {
-            userId: (session.user as any).id,
-            date: {
-              gte: new Date(),
+  const [barbershops, recommendedBarbershops, confirmedBookings] =
+    await Promise.all([
+      db.barbershop.findMany({}),
+      db.barbershop.findMany({
+        orderBy: {
+          id: "asc",
+        },
+      }),
+      session?.user
+        ? db.booking.findMany({
+            where: {
+              userId: (session.user as any).id,
+              date: {
+                gte: new Date(),
+              },
             },
-          },
-          include: {
-            service: true,
-            barbershop: true,
-          },
-        })
-      : Promise.resolve([]),
-  ]);
+            include: {
+              service: true,
+              barbershop: true,
+            },
+          })
+        : Promise.resolve([]),
+    ]);
 
   const formattedDate = formatDate(new Date());
 
@@ -79,7 +85,7 @@ const Home = async () => {
         </h2>
 
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
+          {recommendedBarbershops.map((barbershop) => (
             <div key={barbershop.id} className="min-w-[167px] max-w-[167px]">
               <BarbershopItem barbershop={barbershop} />
             </div>
