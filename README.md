@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💈 FSW Barber - Agendamento Inteligente
 
-## Getting Started
+O **FSW Barber** é uma aplicação full-stack completa projetada para barbearias modernas. O projeto oferece uma experiência fluida para usuários buscarem estabelecimentos, visualizarem serviços e realizarem agendamentos em tempo real.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Demonstração
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![FSW Barber Preview](https://github.com/user-attachments/assets/161142b0-135a-4abb-9273-769646779d57)](https://fsw-barber-three-olive.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **Acesse o projeto online:** [fsw-barber-three-olive.vercel.app](https://fsw-barber-three-olive.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🛠️ Tecnologias Utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+Este projeto foi construído utilizando as tecnologias mais modernas do ecossistema JavaScript:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Framework:** [Next.js](https://nextjs.org/) (App Router)
+* **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+* **Componentes:** [shadcn/ui](https://ui.shadcn.com/)
+* **Banco de Dados & ORM:** [Prisma](https://www.prisma.io/) (PostgreSQL)
+* **Autenticação:** [NextAuth.js](https://next-auth.js.org/)
+* **Deploy:** [Vercel](https://vercel.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ Funcionalidades
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] **Busca de Barbearias:** Filtre e encontre as melhores barbearias da região.
+- [x] **Agendamento:** Escolha data e horário com validação de disponibilidade.
+- [x] **Gestão de Perfil:** Visualize seus agendamentos futuros e histórico.
+- [x] **Design Responsivo:** Experiência otimizada para Mobile e Desktop.
+- [x] **Autenticação:** Login seguro via Google.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## 🔧 Como Executar o Projeto
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/edumatheus65/fsw-barber.git
